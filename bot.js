@@ -30,5 +30,13 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('
   }
  });
 
+client.on("message", function(message) {
+    var args = message.content.split(/ +/g);
+    var command = args.shift()
+
+    if(command == "say") {
+        message.channel.send(args.slice(1, args.length).join(" "))
+    }
+});
  
 client.login(process.env.BOT_TOKEN);
